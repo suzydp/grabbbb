@@ -1,22 +1,38 @@
+@import '../../styles/config.mixins.scss';
 .container{
+  height:auto;
   width:100vw;
-  height:100vh;
   background: #b41414;
+  @include sp{
+    height:80vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
 
 .title{
+  width:max-content;
   font-style:oblique;
   transform: rotate(-10deg);
-  margin:0;
+  margin:0 auto;
 
   .maintitle{
     font-size: 175px;
     margin-bottom:0;
+    @include sp{
+      font-size: 70px;
+      margin:0;
+    }
   }
 
   .subtitle{
     font-size: 40px;
     margin:0 0 4rem 0;
+    @include sp{
+      font-size: 25px;
+      margin:auto;
+    }
   }
 
 }
@@ -25,6 +41,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  @include sp{
+    margin-top:5rem;
+  }
 
   .option-circle{
     display: flex;
@@ -33,6 +52,12 @@
     height:150px;
     margin:0 20px 35px;
     border-radius:75px;
+
+    @include sp{
+      width:60px;
+      height:60px;
+      margin:0 7px 35px;
+    }
 
     &.coffee{
       background: rgba(110, 45, 25, 1);
@@ -56,4 +81,7 @@
 
 .option-title{
   font-weight:bold;
+  @include sp{
+    font-size:13px;
+  }
 }

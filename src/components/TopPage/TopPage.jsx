@@ -13,7 +13,7 @@ export default class TopPage extends Component{
         <div className="menus">
           <ul className="options">
             <li><a className="option-circle coffee"></a><span className="option-title">Coffee</span></li>
-            <li><a className="option-circle juice"></a><span className="option-title">Juice / Bubble tea</span></li>
+            <li><a className="option-circle juice"></a><span className="option-title">Softdrinks</span></li>
             <li><a className="option-circle wifi"></a><span className="option-title">Wi-fi</span></li>
             <li><a className="option-circle outlet"></a><span className="option-title">Outlet</span></li>
           </ul>
