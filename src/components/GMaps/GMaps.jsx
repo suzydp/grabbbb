@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './GMaps.scss';
 
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
 export default class GMaps extends Component{
   static defaultProps = {
     center: {
@@ -19,7 +21,13 @@ export default class GMaps extends Component{
           // bootstrapURLKeys={{ key: /* your key here */ }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-        />
+        >
+          <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text={'Kreyser Avrora'}
+          />
+        </GoogleMapReact>
       </div>
     )
   }
