@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './GMaps.scss';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ imageUrl }) => <div>{imageUrl}</div>;
 
 export default class GMaps extends Component{
   static defaultProps = {
@@ -25,7 +25,7 @@ export default class GMaps extends Component{
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
-            text={'Kreyser Avrora'}
+            imageUrl={'Kreyser Avrora'}
           />
         </GoogleMapReact>
       </div>
