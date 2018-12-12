@@ -1,3 +1,6 @@
+@import './styles/config.variables.scss';
+@import './styles/config.mixins.scss';
+
 *{
   box-sizing: border-box;
 }
@@ -14,6 +17,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+  color:$primary-color;
 }
 
 ul{

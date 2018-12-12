@@ -13,7 +13,7 @@
     margin:0 5px;
   }
 
-  :nth-child(1)::after{
+  :nth-of-type(2)::before{
     content:' | ';
   }
 }

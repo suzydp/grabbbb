@@ -4,6 +4,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import GoogleMapReact from 'google-map-react';
 import TopPage from './components/TopPage/TopPage.jsx';
 import GMaps from './components/GMaps/GMaps.jsx';
+import Privacy from './components/Privacy/Privacy.jsx';
 import './App.css';
 
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/juice" component={GMaps} />
             <Route exact path="/wifi" component={GMaps} />
             <Route exact path="/outlet" component={GMaps} />
+            <Route exact path="/privacy" component={Privacy} />
           </Switch>
         </Router>
       </div>

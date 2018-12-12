@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export default class Footer extends Component{
@@ -10,11 +11,11 @@ export default class Footer extends Component{
         <footer className="Footer">
           <ul className="footer-content">
             <li>Terms of service</li>
-            <li>Privacy Policy</li>
+            <li><Link to="/privacy">Privacy Policy</Link></li>
           </ul>
-          <p className="copyright">&copy; SZDP {year}</p>
+          <p className="copyright"><Link to="/">Grabbbb</Link> by &copy; SZDP {year}</p>
         </footer>
       </div>
     )
   }
-}
+} 
