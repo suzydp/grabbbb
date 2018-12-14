@@ -48,6 +48,8 @@
   .option-circle{
     display: flex;
     flex-direction:column;
+    align-items: center;
+    justify-content: center;
     width: 150px;
     height:150px;
     margin:0 20px 35px;
