@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-import GoogleMapReact from 'google-map-react';
 import TopPage from './components/TopPage/TopPage.jsx';
 import GMaps from './components/GMaps/GMaps.jsx';
 import Privacy from './components/Privacy/Privacy.jsx';
 import './App.css';
 
-
+// to create router
 const appHistory = createBrowserHistory();
 
 class App extends Component {

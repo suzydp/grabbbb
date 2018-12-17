@@ -18,10 +18,10 @@
   margin:-4rem auto 0;
 
   .maintitle{
-    font-size: 175px;
+    font-size: 20vw;
     margin-bottom:0;
     @include sp{
-      font-size: 70px;
+      font-size: 22vw;
       margin:0;
     }
   }
@@ -29,8 +29,9 @@
   .subtitle{
     font-size: 40px;
     margin:0 0 4rem 0;
+    text-align: right;
     @include sp{
-      font-size: 25px;
+      font-size: 7vw;
       margin:auto;
     }
   }
