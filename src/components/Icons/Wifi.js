@@ -3,9 +3,9 @@ import React from 'react';
 const SVG = ({
   style = {},
   fill = "#fff",
-  width = "100%",
+  width = "70%",
   className = "wifi",
-  viewBox = "0 3 50 50",
+  viewBox = "1 2 50 50",
 }) => ( 
   <svg 
     width = {width}
