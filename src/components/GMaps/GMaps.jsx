@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 // {} - import submodules from the library
 import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import superagent from 'superagent';
 import './GMaps.scss';
-import { endianness } from 'os';
 
 const location = {
   lat: 40.7575285,
