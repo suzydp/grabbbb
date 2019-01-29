@@ -1,65 +1,55 @@
 import React, { Component } from 'react';
+import SearchBox from './SearchBox/SearchBox';
 // {} - import submodules from the library
-import { loadGoogleMaps, loadPlaces } from '../../utils/index';
 import './GMaps.scss';
 
-export default class GMaps extends Component{
+export default class GMaps extends Component {
 
-  componentDidMount() {
-    console.log('component did mount!')
-    let googleMapsPromise = loadGoogleMaps();
-    let placesPromise = loadPlaces();
-    Promise.all([
-      googleMapsPromise,
-      placesPromise
-    ])
-    .then(values => {
-      // Googleから提供されるAPIの中身を変更する場合は、子コンポーネントからではなく親コンポーネントからやる方が簡単。
-      // ここで格納されるvenuesの値はFoursquare APIであらかじめ指定した値のみであり、APIの中身を変えた場合は変更が必要
-      // GoogleMapのMapsオブジェクトが返ってくる
-      let google = values[0];
-      // venuesの中にはmetaとresponseがあるが、responseの中身をfetchしたいのでvalues[1].response.venuesとする
-      let venues = values[1].response.venues;
+	// to render maps
+	componentDidMount(){
+		this.renderMap()
+	}
 
-      console.log(values);//array(1)
-      // 上記と同様に、Mapに関するものはpropertyとして扱う。
-      // (markerの場合は、いちいち場所が変更されるたびにコールバック関数を呼ばないといけないなどの手間が生じるため)
-      this.google = google
-      this.markers = [];
-      this.infowindow = new google.maps.InfoWindow();
-      // 下でthis.mapを呼び出すためのmapインスタンスが必要
-      this.map = new google.maps.Map(document.getElementById('map'),{
-        zoom: 9,
-        scrollwheel: true,
-        center: { 
-          lat: venues[0].location.lat,
-          lng: venues[0].location.lng,
-        },
-      });
+	renderMap = () => {
+		loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyANoAMIDm2KDV97I6ZZieUpzkkEBng8BRE&callback=initMap")
+		// this is how can we keep it visible by converting it to the window object
+		window.initMap = this.initMap
+	}
 
-      // to create a marker for each places which matched
-      venues.forEach(venue => {
-        let marker = new google.maps.Marker({
-          // when you wanna pin marker, position and map properties are required
-          position: { lat: venue.location.lat, lng: venue.location.lng },
-          map: this.map,
-          venue: venue,
-          //to pin into an exact position
-          id: venue.id,
-          name: venue.name,
-          animation: google.maps.Animation.DROP,
-        });
-        // 上記のデータをmarkers arrayにpushする
-        this.markers.push(this.markers);
-      });
-    })
-  }
+	initMap = () => {
+		// ↓below: window is a global object of your HTML document
+		const map = new window.google.maps.Map(document.getElementById('map'), {
+			center: {lat: -34.397, lng: 150.644},
+			zoom: 8
+		});
+	}
 
-  render() {
-    console.log('rendered!');
-    return(
-      <div id="map">
-      </div>
-    )
-  }
+	render() {
+		return (
+			<React.Fragment>
+				<SearchBox />
+				<div id="map"></div>
+			</React.Fragment>
+		)
+	}
 }
+
+// function called something like load the script, to access <script> in google maps
+function loadScript(url) {
+	// we'll have something called the reference or the index of the first script tag 
+	// select the data which has script tag
+	// ↓below: window is a global object of your HTML document
+	let index = window.document.getElementsByTagName("script")[0]
+	let script = window.document.createElement("script")
+	script.src = url // if the url is equal to parameter, we have awesome source!
+	script.async = true
+	script.defer = true
+	// select the index or the first script tag, then we'll select its parent node and then insert our script before it
+	// to keep our script at the very beginning
+	index.parentNode.insertBefore(script, index)
+}
+
+/*
+	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap
+		async defer"></script>
+*/ 
