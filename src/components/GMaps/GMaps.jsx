@@ -6,10 +6,14 @@ import './GMaps.scss';
 
 export default class GMaps extends Component {
 
+	// to store all the venues of results, state needs to prepare with empty array
+	state = {
+		venues: [],
+	}
+
 	// to render maps
-	componentDidMount(){
+	componentDidMount() {
 		this.getVenues()
-		this.renderMap()
 	}
 
 	renderMap = () => {
@@ -32,6 +36,9 @@ export default class GMaps extends Component {
 		// axios is pretty similar to Fetch API: https://medium.com/@sahilkkrazy/fetch-vs-axios-http-request-c9afa43f804e
 		axios.get(endPoint + new URLSearchParams(parameters))
 			.then(response => {
+				this.setState({
+					venues: response.data.response.groups[0].items
+				}, this.renderMap()) // after change state in array, map will render
 				console.log(response.data.response.groups[0].items)
 			})
 			.catch(error => {
@@ -45,6 +52,17 @@ export default class GMaps extends Component {
 			center: {lat: 49.24966, lng: -123.11934},
 			zoom: 15
 		});
+
+		this.state.venues.map(myVenue => {
+			// looping this
+			var marker = new window.google.maps.Marker({
+				position: {lat: myVenue.venue.location.lat , lng: myVenue.venue.location.lng},
+				map: map,
+				title: myVenue.venue.name
+			})
+		})
+
+		
 	}
 
 	render() {
