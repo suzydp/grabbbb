@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './SearchBox.scss';
-import { withState } from 'recompose';
 
 export default class SearchBox extends Component {
   constructor(props) {
