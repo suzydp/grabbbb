@@ -6,7 +6,7 @@ export const getUserLocation = () => {
   // return Promise as an instance
   return new Promise((resolve, reject) => {
     // in case of user Allowed (if user deny, show error in console)
-    navigator.geolocation.getCurrentPosition((position) => {//positionにユーザーの位置情報が入る
+    return navigator.geolocation.getCurrentPosition((position) => {//positionにユーザーの位置情報が入る
       // Promise処理が成功した場合の条件のみここで定義(失敗 - console.logへ)
       const location = {
         lat: position.coords.latitude,
@@ -14,7 +14,7 @@ export const getUserLocation = () => {
       };
       // 成功したらlocationの処理を走らせる
       resolve(location);
-      console.log('success:)')
+      console.log(`success:) currently you are in lat:${location.lat}, lng:${location.lng}`);
     }, reject(console.log('failed:(')));
   });
 }

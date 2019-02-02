@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // {} - import submodules from the library
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { getUserLocation, searchPlaces } from './../../utils/index';
 import './GMaps.scss';
 
 const location = {
@@ -31,6 +32,10 @@ const GMapsForGrabbbb = withGoogleMap(props => {
 
 
 export default class GMaps extends Component{
+
+  componentWillMount() {
+    getUserLocation()
+  }
 
   render() {
     return(
