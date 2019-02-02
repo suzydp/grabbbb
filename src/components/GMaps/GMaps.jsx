@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 // {} - import submodules from the library
-import { compose, withProps } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import { getUserLocation } from '../../utils/index.js';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import './GMaps.scss';
 
 const location = {
@@ -18,30 +16,33 @@ const markerPosition = {
 }
 
 
-const GMapsForGrabbbb = compose(
-  withProps({
-    // <GMapsForGrabbbb />に書き込んでた要素をオブジェクト化している - どのような根拠でやっているのかが不明
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?region=JP&key=AIzaSyANoAMIDm2KDV97I6ZZieUpzkkEBng8BRE&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100vh`, width: `100vw`, }} />,//この二重括弧の意味って何？
-    containerElement: <div style={{ height: `100vh`, width: `100vw`, }} />,
-    mapElement: <div style={{ height: `100vh`, width: `100vw`, }} />,
-  }),withScriptjs,withGoogleMap)((props) => 
-  <GoogleMap
-    defaultZoom={15}
-    defaultCenter={location}
+const GMapsForGrabbbb = withGoogleMap(props => {
+  console.log(props)
+  return (
+    <GoogleMap
+    defaultZoom={props.zoom}
+    defaultCenter={props.center}
   >
     {props.isMarkerShown && <Marker position={markerPosition} />}
-  </GoogleMap>
-)
-
-
+    </GoogleMap>
+  )
+}
+);
 
 
 export default class GMaps extends Component{
+
   render() {
     return(
       <div>
-        <GMapsForGrabbbb isMarkerShown />
+        <GMapsForGrabbbb
+          isMarkerShown 
+          zoom={13}
+          center={location}
+          loadingElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
+          containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
+          mapElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
+        />
       </div>
     )
   }

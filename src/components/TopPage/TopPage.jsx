@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { searchPlaces } from '../../utils/index.js';
 import Footer from './../Footer/Footer.jsx';
 import CoffeeIcon from './../Icons/Coffee.js';
 import JuiceIcon from './../Icons/Juice.js';
