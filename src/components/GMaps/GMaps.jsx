@@ -3,6 +3,7 @@ import Menus from './Menus/Menus';
 // {} - import submodules from the library
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import { getUserLocation, searchPlaces } from './../../utils/index';
+import CoffeeMarker from "./../../assets/svg/pin-coffee-mob.svg";
 import './GMaps.scss';
 
 
@@ -27,7 +28,10 @@ const GMapsForGrabbbb = withGoogleMap(props => {
           lat: result.geometry.location.lat(),
           lng: result.geometry.location.lng(),
         };
-        return <Marker position={position} />
+        return <Marker 
+          position={position}
+          icon={CoffeeMarker}
+           />
       })}
     </GoogleMap>
   )
