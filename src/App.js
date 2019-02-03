@@ -17,7 +17,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={TopPage} />
             <Route exact path="/coffee" component={GMaps} />
-            <Route exact path="/juice" component={GMaps} />
+            <Route exact path="/bubbletea" component={GMaps} />
             <Route exact path="/wifi" component={GMaps} />
             <Route exact path="/outlet" component={GMaps} />
             <Route exact path="/privacy" component={Privacy} />
