@@ -21,10 +21,11 @@ const GMapsForGrabbbb = withGoogleMap(props => {
   console.log(props)
   return (
     <GoogleMap
-    defaultZoom={props.zoom}
-    defaultCenter={props.center}
-  >
-    {props.isMarkerShown && <Marker position={markerPosition} />}
+      defaultZoom={props.zoom}
+      defaultCenter={location}
+      center={props.center}
+    >
+      {props.isMarkerShown && <Marker position={props.center} />}
     </GoogleMap>
   )
 }
@@ -32,18 +33,34 @@ const GMapsForGrabbbb = withGoogleMap(props => {
 
 
 export default class GMaps extends Component{
-
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // initailize with state to be a change-able value
+      location: {},
+    }
+    // instead of componentWillMount() to be more secure
     getUserLocation()
+      // this function is basically invoked with Promise, 
+      // so better to use Promise here as well to get response properly
+      .then(res => {
+        console.log('what is res?', res)
+        this.setState({
+          // set current location (res form Promise) as a state 
+          location: res,
+        })
+      });
   }
 
   render() {
+    // check current location which has fetched by res
+    console.log('location is', this.state.location)
     return(
       <div>
         <GMapsForGrabbbb
           isMarkerShown 
           zoom={13}
-          center={location}
+          center={this.state.location}
           loadingElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           mapElement={<div style={{ height: `100vh`, width: `100vw`, }} />}

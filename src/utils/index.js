@@ -1,25 +1,27 @@
 import { GoogleMap } from "react-google-maps";
 
-// To Allow access user's current location - ユーザーの位置情報を拾ってくる関数
+// Function To Allow access user's current location
+// Because geolocation is basically asynchronous api, better to use Promise to handle with asynchonouslly.
+// (same to do in GMaps.jsx)
 export const getUserLocation = () => {
   console.log('getUserLocation caught');
   // return Promise as an instance
   return new Promise((resolve, reject) => {
     // in case of user Allowed (if user deny, show error in console)
-    return navigator.geolocation.getCurrentPosition((position) => {//positionにユーザーの位置情報が入る
-      // Promise処理が成功した場合の条件のみここで定義(失敗 - console.logへ)
+    return navigator.geolocation.getCurrentPosition((position) => { // User's current locaiton will into the position value.
+      // define condition of is the Promise execution has successfully done.
       const location = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-      // 成功したらlocationの処理を走らせる
+      // return location value if 'resolve'(= successfully caught)
       resolve(location);
-      console.log(`success:) currently you are in lat:${location.lat}, lng:${location.lng}`);
-    }, reject(console.log('failed:(')));
+      // console.log(`success:) currently you are in lat:${location.lat}, lng:${location.lng}`);
+    });
   });
 }
 
-// ユーザーの位置情報からキーワードに一致させる場所を表示させる関数
+// Function for showing places depends on user's current location with Google Places API
 export const searchPlaces = (target, keyword) => {
   const places = new GoogleMap.maps.places.PlacesService(target);
   places.searchNearby({
