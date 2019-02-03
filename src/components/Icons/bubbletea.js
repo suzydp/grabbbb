@@ -4,7 +4,7 @@ const SVG = ({
   style = {},
   fill = "#fff",
   width = "70%",
-  className = "Juice",
+  className = "Bubbletea",
   viewBox = "1 0 50 50",
 }) => ( 
   <svg 
