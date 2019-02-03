@@ -10,18 +10,20 @@ import './TopPage.scss';
 export default class TopPage extends Component{
   render(){
     return(
-      <div className="container">
-        <div className="title">
-          <h1 className="maintitle">Grabbbb</h1>
-          <p className="subtitle">Grab your wants fast</p>
-        </div>
-        <div className="menus">
-          <ul className="options">
-            <li><Link to="/coffee" className="option-circle coffee" keyword={`Coffee`}><CoffeeIcon /></Link><span className="option-title">Coffee</span></li>
-            <li><Link to="/bubbletea" className="option-circle bubbletea" keyword={`bubbletea`}><BubbleTeaIcon /></Link><span className="option-title">Bubble Tea</span></li>
-            <li><Link to="/wifi" className="option-circle wifi" keyword={`Wifi`}><WifiIcon /></Link><span className="option-title">Wi-fi</span></li>
-            <li><Link to="/outlet" className="option-circle outlet" keyword={`Outlet`}><OutletIcon /></Link><span className="option-title">Outlet</span></li>
-          </ul>
+      <div>
+        <div className="container">
+          <div className="title">
+            <h1 className="maintitle">Grabbbb</h1>
+            <p className="subtitle">Grab your wants fast</p>
+          </div>
+          <div className="menus">
+            <ul className="options">
+              <li><Link to="/coffee" className="option-circle coffee" keyword={`Coffee`}><CoffeeIcon /></Link><span className="option-title">Coffee</span></li>
+              <li><Link to="/bubbletea" className="option-circle bubbletea" keyword={`bubbletea`}><BubbleTeaIcon /></Link><span className="option-title">Bubble Tea</span></li>
+              <li><Link to="/wifi" className="option-circle wifi" keyword={`Wifi`}><WifiIcon /></Link><span className="option-title">Wi-fi</span></li>
+              <li><Link to="/outlet" className="option-circle outlet" keyword={`Outlet`}><OutletIcon /></Link><span className="option-title">Outlet</span></li>
+            </ul>
+          </div>
         </div>
         <Footer/>
       </div>

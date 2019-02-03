@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import Menus from './Menus/Menus';
 // {} - import submodules from the library
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import { getUserLocation, searchPlaces } from './../../utils/index';
 import './GMaps.scss';
+
 
 // default location (NYC)
 const location = {
@@ -17,6 +19,7 @@ const GMapsForGrabbbb = withGoogleMap(props => {
       defaultZoom={props.zoom}
       defaultCenter={location}
       center={props.center}
+      options={{streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
     >
       {/* {props.isMarkerShown && <Marker position={props.center} />} */}
       {props.results.map(result => {
@@ -73,12 +76,12 @@ export default class GMaps extends Component{
     console.log('location is', this.state.location)
     return(
       <div>
-
+        <Menus className={"BurgerMenu"} />
         <GMapsForGrabbbb
           isMarkerShown 
           zoom={13}
           center={this.state.location}
-          loadingElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
+          loadingElement={<div style={{ height: `70vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           mapElement={<div className="map" style={{ height: `100vh`, width: `100vw`, }} />}
           results={this.state.results}
