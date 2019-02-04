@@ -34,7 +34,7 @@ export const searchPlaces = (map, location, keyword, callback) => {
   // console.log('places', places)
   places.nearbySearch({
     location: target.center,
-    radius: '1000',
+    radius: '2500',
     name: keyword,
     // results = searchNearbyの結果
   }, (results, status) => {

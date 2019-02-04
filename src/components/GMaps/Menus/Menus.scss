@@ -1,4 +1,122 @@
-.BurgerMenu{
+.BurgerMenu {
   background: #a90000;
   z-index: 100;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 40px;
+  width: 40px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #fff;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #b41414;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #fff;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: flex!important;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  line-height: 3;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.bm-footer{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.copyright{
+  font-size: 1rem;
+  a {
+    text-decoration: none;
+  }
+}
+
+.menu-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  position: relative;
+  margin-right: 1rem;
+
+  &.coffee{
+    background: rgba(110, 45, 25, 1);
+  }
+
+  &.bubbletea{
+    background:rgba(210, 25, 30, 1);
+  }
+
+  &.wifi{
+    background:rgba(230, 40, 35, 1);
+  }
+
+  &.outlet{
+    background:rgba(240, 150, 50, 1);
+  }
 }
