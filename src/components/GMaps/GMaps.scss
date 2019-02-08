@@ -1,3 +1,21 @@
-.info-window {
-  color: #444;
+.info-window{
+  text-align: left;
+
+  &__shopname {
+    color: #444;
+    font-size: 1rem;
+    margin: .5rem 0;
+  }
+
+  &__hours {
+    color: #444;
+    font-size: .8rem;
+    line-height: 1.75;
+  }
+
+  &__link a {
+    color: #888;
+    font-weight: 600;
+    text-decoration: none;
+  }
 }

@@ -54,6 +54,7 @@ class GMapsForGrabbbb extends Component {
             lat: result.geometry.location.lat(),
             lng: result.geometry.location.lng(),
           };
+          let link = `https://www.google.com/maps/search/?api=1&query=${result.name}&query_place_id=${result.place_id}`;
           
           return (
             <Marker
@@ -64,7 +65,11 @@ class GMapsForGrabbbb extends Component {
             >
               {this.state.isOpen && (this.state.activeMarkerIndex === index) && (<InfoWindow onCloseClick={this.onToggleOpen}>
                 <div className="info-window">
-                  <p>{result.name}</p>
+                  <h2 className="info-window__shopname">{result.name}</h2>
+                  <ul>
+                    <li className="info-window__hours">{`NOW : ${result.opening_hours ? (result.opening_hours.open_now ? 'OPEN' : 'CLOSED') : 'NO INFOMATION'}`}</li>
+                    <li className="info-window__link"><a href={link}>Open in Google Maps</a></li>
+                  </ul>
                 </div>
               </InfoWindow>)}
             </Marker>
