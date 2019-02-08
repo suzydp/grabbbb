@@ -77,62 +77,7 @@ class GMapsForGrabbbb extends Component {
 
 const InnerToGMaps = withGoogleMap(props => (
   <GMapsForGrabbbb {...props} />
-))
-
-// // in case of if I wanna write in functional component,
-// const GMapsForGrabbbb = withGoogleMap(props => {
-//   // console.log('props in GmapsForGrabbbb' + props);
-//   this.state = {
-//     isOpen: false,
-//     activeMarkerIndex: null,
-//   }
-
-//   const openInfoWindow = (index) => {
-//     const { isOpen } = this.state;
-//     this.setState({
-//       isOpen: !isOpen,
-//       activeMarkerIndex: index,
-//     });
-//   }
-
-//   const onToggleOpen = () => {
-//     console.log('Hey, Toggle is now open');
-//     const { isOpen } = this.state;
-//     this.setState({
-//       isOpen: !isOpen,
-//     });
-//   }
-
-//   return (
-//     <GoogleMap
-//       defaultZoom={props.zoom}
-//       defaultCenter={location}
-//       center={props.center}
-//       options={{streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
-//     >
-//       {/* {props.isMarkerShown && <Marker position={props.center} />} */}
-//       {props.results.map((result, index) => {
-//         let position = {
-//           lat: result.geometry.location.lat(),
-//           lng: result.geometry.location.lng(),
-//         };
-//         return (
-//           <Marker
-//             position={position}
-//             icon={CoffeeMarker}
-//             onClick={() => openInfoWindow}
-//           >
-//             {this.isOpen && (openInfoWindow === index) && (<InfoWindow onCloseClick={onToggleOpen}>
-//               <div>{`CAFE NAME: ${result.name}`}</div>
-//             </InfoWindow>)}
-//           </Marker>
-//         )
-//       })}
-//     </GoogleMap>
-//   )
-// }
-// );
-
+));
 
 export default class GMaps extends Component{
   constructor(props) {
