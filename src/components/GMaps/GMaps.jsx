@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menus from './Menus/Menus';
 // {} - import submodules from the library
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { getUserLocation, searchPlaces } from './../../utils/index';
 import CoffeeMarker from "./../../assets/svg/pin-coffee-mob.svg";
 import './GMaps.scss';
@@ -13,30 +13,125 @@ const location = {
   lng: -73.9884469,
 }
 
-const GMapsForGrabbbb = withGoogleMap(props => {
-  console.log(props)
-  return (
-    <GoogleMap
-      defaultZoom={props.zoom}
-      defaultCenter={location}
-      center={props.center}
-      options={{streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
-    >
-      {/* {props.isMarkerShown && <Marker position={props.center} />} */}
-      {props.results.map(result => {
-        let position = {
-          lat: result.geometry.location.lat(),
-          lng: result.geometry.location.lng(),
-        };
-        return <Marker 
-          position={position}
-          icon={CoffeeMarker}
-           />
-      })}
-    </GoogleMap>
-  )
+class GMapsForGrabbbb extends Component {
+  // console.log('props in GmapsForGrabbbb' + props);
+  state = {
+    isOpen: false,
+    activeMarkerIndex: null,
+  }
+
+  openInfoWindow = index => {
+    console.log(index);
+
+    const { isOpen } = this.state;
+    this.setState({
+      isOpen: !isOpen,
+      activeMarkerIndex: index,
+    });
+  }
+
+  onToggleOpen = () => {
+    console.log('Hey, Toggle is now open');
+    const { isOpen } = this.state;
+    this.setState({
+      isOpen: !isOpen,
+    });
+  }
+
+  render() {
+    console.log(this.state.isOpen, this.state.activeMarkerIndex);
+
+    return (
+      <GoogleMap
+        defaultZoom={this.props.zoom}
+        defaultCenter={location}
+        center={this.props.center}
+        options={{streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
+      >
+        {/* {props.isMarkerShown && <Marker position={props.center} />} */}
+        {this.props.results.map((result, index) => {
+          let position = {
+            lat: result.geometry.location.lat(),
+            lng: result.geometry.location.lng(),
+          };
+          
+          return (
+            <Marker
+              key={index}
+              position={position}
+              icon={CoffeeMarker}
+              onClick={() => this.openInfoWindow(index)}
+            >
+              {this.state.isOpen && (this.state.activeMarkerIndex === index) && (<InfoWindow onCloseClick={this.onToggleOpen}>
+                <div className="info-window">
+                  <p>{result.name}</p>
+                </div>
+              </InfoWindow>)}
+            </Marker>
+          )
+        })}
+      </GoogleMap>
+    )
+  }
 }
-);
+
+const InnerToGMaps = withGoogleMap(props => (
+  <GMapsForGrabbbb {...props} />
+))
+
+// // in case of if I wanna write in functional component,
+// const GMapsForGrabbbb = withGoogleMap(props => {
+//   // console.log('props in GmapsForGrabbbb' + props);
+//   this.state = {
+//     isOpen: false,
+//     activeMarkerIndex: null,
+//   }
+
+//   const openInfoWindow = (index) => {
+//     const { isOpen } = this.state;
+//     this.setState({
+//       isOpen: !isOpen,
+//       activeMarkerIndex: index,
+//     });
+//   }
+
+//   const onToggleOpen = () => {
+//     console.log('Hey, Toggle is now open');
+//     const { isOpen } = this.state;
+//     this.setState({
+//       isOpen: !isOpen,
+//     });
+//   }
+
+//   return (
+//     <GoogleMap
+//       defaultZoom={props.zoom}
+//       defaultCenter={location}
+//       center={props.center}
+//       options={{streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
+//     >
+//       {/* {props.isMarkerShown && <Marker position={props.center} />} */}
+//       {props.results.map((result, index) => {
+//         let position = {
+//           lat: result.geometry.location.lat(),
+//           lng: result.geometry.location.lng(),
+//         };
+//         return (
+//           <Marker
+//             position={position}
+//             icon={CoffeeMarker}
+//             onClick={() => openInfoWindow}
+//           >
+//             {this.isOpen && (openInfoWindow === index) && (<InfoWindow onCloseClick={onToggleOpen}>
+//               <div>{`CAFE NAME: ${result.name}`}</div>
+//             </InfoWindow>)}
+//           </Marker>
+//         )
+//       })}
+//     </GoogleMap>
+//   )
+// }
+// );
 
 
 export default class GMaps extends Component{
@@ -81,7 +176,7 @@ export default class GMaps extends Component{
     return(
       <div>
         <Menus className={"BurgerMenu"} />
-        <GMapsForGrabbbb
+        <InnerToGMaps
           isMarkerShown 
           zoom={13}
           center={this.state.location}
