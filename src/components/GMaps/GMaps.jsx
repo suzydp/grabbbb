@@ -50,6 +50,7 @@ class GMapsForGrabbbb extends Component {
       >
         {/* {props.isMarkerShown && <Marker position={props.center} />} */}
         {this.props.results.map((result, index) => {
+          console.log(result);
           let position = {
             lat: result.geometry.location.lat(),
             lng: result.geometry.location.lng(),
@@ -68,6 +69,7 @@ class GMapsForGrabbbb extends Component {
                   <h2 className="info-window__shopname">{result.name}</h2>
                   <ul>
                     <li className="info-window__hours">{`NOW : ${result.opening_hours ? (result.opening_hours.open_now ? 'OPEN' : 'CLOSED') : 'NO INFOMATION'}`}</li>
+                    <li className="info-window__address">{result.vicinity}</li>
                     <li className="info-window__link"><a href={link}>Open in Google Maps</a></li>
                   </ul>
                 </div>
