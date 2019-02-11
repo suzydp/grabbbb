@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # comment out bulid instead of adding these below
-/src/*
-/public/*
-/build/static/css/*.map
-/build/static/js/*.map
+src/*
+public/*
+build/static/css/*.map
+build/static/js/*.map
