@@ -1,7 +1,7 @@
 {
-  "main.css": "/static/css/main.df82ae9f.chunk.css",
-  "main.js": "/static/js/main.3d5d79ca.chunk.js",
-  "main.js.map": "/static/js/main.3d5d79ca.chunk.js.map",
+  "main.css": "/static/css/main.8010fc4e.chunk.css",
+  "main.js": "/static/js/main.1fc56e14.chunk.js",
+  "main.js.map": "/static/js/main.1fc56e14.chunk.js.map",
   "static/js/1.2fc8efae.chunk.js": "/static/js/1.2fc8efae.chunk.js",
   "static/js/1.2fc8efae.chunk.js.map": "/static/js/1.2fc8efae.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
@@ -10,8 +10,8 @@
   "static/media/pin-bubbletea-mob.svg": "/static/media/pin-bubbletea-mob.4278756c.svg",
   "static/media/pin-wifi-mob.svg": "/static/media/pin-wifi-mob.ffed7a39.svg",
   "static/media/pin-outlet-mob.svg": "/static/media/pin-outlet-mob.0db705e7.svg",
-  "static/css/main.df82ae9f.chunk.css.map": "/static/css/main.df82ae9f.chunk.css.map",
+  "static/css/main.8010fc4e.chunk.css.map": "/static/css/main.8010fc4e.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.96e4558fba6fc1f1aca7942d717a00ca.js": "/precache-manifest.96e4558fba6fc1f1aca7942d717a00ca.js",
+  "precache-manifest.eaac640d6287b364d51868155a3998cb.js": "/precache-manifest.eaac640d6287b364d51868155a3998cb.js",
   "service-worker.js": "/service-worker.js"
 }

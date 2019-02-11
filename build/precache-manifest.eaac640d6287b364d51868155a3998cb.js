@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "3d5d79ca1839a8838862",
-    "url": "/static/css/main.df82ae9f.chunk.css"
+    "revision": "1fc56e142bea6e371777",
+    "url": "/static/css/main.8010fc4e.chunk.css"
   },
   {
-    "revision": "3d5d79ca1839a8838862",
-    "url": "/static/js/main.3d5d79ca.chunk.js"
+    "revision": "1fc56e142bea6e371777",
+    "url": "/static/js/main.1fc56e14.chunk.js"
   },
   {
     "revision": "2fc8efaec3a8f52c344c",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/static/media/pin-outlet-mob.0db705e7.svg"
   },
   {
-    "revision": "1b8c4c52fe8a27f8b6eb83b6d6a65967",
+    "revision": "319c5518fc7750e5f843f9a5f5b0dc83",
     "url": "/index.html"
   }
 ];
