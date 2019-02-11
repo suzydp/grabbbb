@@ -60,6 +60,7 @@ class GMapsForGrabbbb extends Component {
           return (
             <Marker
               key={index}
+              animation={window.google.maps.Animation.DROP}
               position={position}
               icon={BubbleTeaMarker}
               onClick={() => this.openInfoWindow(index)}
