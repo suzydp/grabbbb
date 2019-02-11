@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Menus from './Menus/Menus';
 // {} - import submodules from the library
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
-import { getUserLocation, searchPlaces } from './../../utils/index';
-import CoffeeMarker from "./../../assets/svg/pin-coffee-mob.svg";
+import { getUserLocation, searchPlaces } from '../../utils/index';
+import WifiMarker from "./../../assets/svg/pin-wifi-mob.svg";
 import './GMaps.scss';
 
 
@@ -61,7 +61,7 @@ class GMapsForGrabbbb extends Component {
             <Marker
               key={index}
               position={position}
-              icon={CoffeeMarker}
+              icon={WifiMarker}
               onClick={() => this.openInfoWindow(index)}
             >
               {this.state.isOpen && (this.state.activeMarkerIndex === index) && (<InfoWindow onCloseClick={this.onToggleOpen}>
@@ -117,7 +117,7 @@ export default class GMaps extends Component{
           })
         };
         // invoke searchPlaces with parameters here to show results 'based on current locations'
-        searchPlaces(map, this.state.location, 'coffee', updateState);
+        searchPlaces(map, this.state.location, 'wifi', updateState);
       })
       .then(() => console.log('results is', this.state.results))
   }
