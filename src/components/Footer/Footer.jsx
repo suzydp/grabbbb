@@ -9,10 +9,6 @@ export default class Footer extends Component{
     return(
       <div>
         <footer className="Footer">
-          <ul className="footer-content">
-            <li>Terms of service</li>
-            <li><Link to="/privacy">Privacy Policy</Link></li>
-          </ul>
           <p className="copyright"><Link to="/">Grabbbb</Link> by &copy; SZDP {year}</p>
         </footer>
       </div>

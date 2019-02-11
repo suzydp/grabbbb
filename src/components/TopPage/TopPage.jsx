@@ -24,6 +24,9 @@ export default class TopPage extends Component{
               <li><Link to="/outlet" className="option-circle outlet" keyword={`Outlet`}><OutletIcon /></Link><span className="option-title">Outlet</span></li>
             </ul>
           </div>
+          <div className="footer-content">
+            <Link to="/privacy">Privacy Policy</Link>
+          </div>
         </div>
         <Footer/>
       </div>

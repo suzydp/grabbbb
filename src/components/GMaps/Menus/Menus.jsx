@@ -18,8 +18,7 @@ export default class Menus extends Component {
         <a id="Outlet" className="menu-item" href="/outlet"><div className="menu-icon-wrap outlet"><OutletIcon className="menu-icon outlet" /></div>Outlet</a>
         <div className="bm-footer">
           <ul>
-            <li>Terms of service</li>
-            <li>Privacy Policy</li>
+            <a href="/privacy"><li>Terms of service</li></a>
           </ul>
           <p className="copyright"><a id="home" href="/">Grabbbb</a> by &copy; <a href="https://suzydp.net">SZDP {year}</a></p>
         </div>
