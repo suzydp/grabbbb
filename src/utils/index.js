@@ -4,7 +4,6 @@
 // Because geolocation is basically asynchronous api, better to use Promise to handle with asynchonouslly.
 // (same to do in GMaps.jsx)
 export const getUserLocation = () => {
-  console.log('getUserLocation caught');
   // return Promise as an instance
   return new Promise((resolve, reject) => {
     // in case of user Allowed (if user deny, show error in console)
@@ -24,7 +23,6 @@ export const getUserLocation = () => {
 // Function for showing places depends on user's current location with Google Places API
 // add location, map, keyword in parameter to access from outside
 export const searchPlaces = (map, location, keyword, callback) => {
-  console.log('Alright, searchPlaces has been invoked');
   const target = new window.google.maps.Map(map, {
     center: location,
     zoom: 15,
@@ -39,9 +37,9 @@ export const searchPlaces = (map, location, keyword, callback) => {
     // results = searchNearbyの結果
   }, (results, status) => {
     // 検索のプロセスが正常に処理されていたら
-    console.log('status', window.google.maps.places.PlacesServiceStatus)
+    // console.log('status', window.google.maps.places.PlacesServiceStatus)
     if (status === window.google.maps.places.PlacesServiceStatus.OK){
-      console.log('results: ', results)
+      // console.log('results: ', results)
       // Pin markers
       // for (let i = 0; i < results.length; i++){//resultの中身が全て吐き出されるまで
       //   new GoogleMap.maps.marker({

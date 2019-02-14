@@ -21,8 +21,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   openInfoWindow = index => {
-    console.log(index);
-
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen,
@@ -31,7 +29,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   onToggleOpen = () => {
-    console.log('Hey, Toggle is now open');
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen,
@@ -39,7 +36,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   render() {
-    console.log(this.state.isOpen, this.state.activeMarkerIndex);
 
     return (
       <GoogleMap
@@ -50,7 +46,6 @@ class GMapsForGrabbbb extends Component {
       >
         {/* {props.isMarkerShown && <Marker position={props.center} />} */}
         {this.props.results.map((result, index) => {
-          console.log(result);
           let position = {
             lat: result.geometry.location.lat(),
             lng: result.geometry.location.lng(),
@@ -103,7 +98,7 @@ export default class GMaps extends Component{
       // this function is basically invoked with Promise, 
       // so better to use Promise here as well to get response properly
       .then(res => {
-        console.log('what is res?', res)
+        // console.log('what is res?', res)
         this.setState({
           // set current location (res form Promise) as a state 
           location: res,

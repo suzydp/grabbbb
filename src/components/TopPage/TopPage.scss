@@ -1,6 +1,6 @@
 @import '../../styles/config.mixins.scss';
-.container{
-  height:auto;
+.top-container{
+  height:100vh;
   width:100vw;
   background: #b41414;
   @include sp{

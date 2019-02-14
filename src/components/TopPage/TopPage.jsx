@@ -11,7 +11,7 @@ export default class TopPage extends Component{
   render(){
     return(
       <div>
-        <div className="container">
+        <div className="top-container">
           <div className="title">
             <h1 className="maintitle">Grabbbb</h1>
             <p className="subtitle">Grab your wants fast</p>

@@ -31,7 +31,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   onToggleOpen = () => {
-    console.log('Hey, Toggle is now open');
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen,
@@ -39,8 +38,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   render() {
-    console.log(this.state.isOpen, this.state.activeMarkerIndex);
-
     return (
       <GoogleMap
         defaultZoom={this.props.zoom}
@@ -50,7 +47,6 @@ class GMapsForGrabbbb extends Component {
       >
         {/* {props.isMarkerShown && <Marker position={props.center} />} */}
         {this.props.results.map((result, index) => {
-          console.log(result);
           let position = {
             lat: result.geometry.location.lat(),
             lng: result.geometry.location.lng(),
@@ -129,12 +125,12 @@ export default class GMaps extends Component{
     console.log('location is', this.state.location)
     return(
       <div>
-        <Menus className={"BurgerMenu"} />
+        <Menus className="BurgerMenu" />
         <InnerToGMaps
           isMarkerShown 
           zoom={13}
           center={this.state.location}
-          loadingElement={<div style={{ height: `70vh`, width: `100vw`, }} />}
+          loadingElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           mapElement={<div className="map" style={{ height: `100vh`, width: `100vw`, }} />}
           results={this.state.results}
