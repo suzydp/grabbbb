@@ -4,7 +4,12 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// enable https if location is protocol - able to identify by Javascript
+if (window.location.hostname !== 'localhost' && window.location.protocol !== 'https:') {
+  window.location.protocol="https:";
+} else {
+  ReactDOM.render(<App />, document.getElementById('root'));
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
