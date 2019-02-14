@@ -33,7 +33,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   onToggleOpen = () => {
-    console.log('Hey, Toggle is now open');
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen,
@@ -174,7 +173,7 @@ export default class GMaps extends Component{
         <Menus className={"BurgerMenu"} />
         <InnerToGMaps
           isMarkerShown 
-          zoom={13}
+          zoom={15}
           center={this.state.location}
           loadingElement={<div style={{ height: `70vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}

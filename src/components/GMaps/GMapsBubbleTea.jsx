@@ -98,7 +98,6 @@ export default class GMaps extends Component{
       // this function is basically invoked with Promise, 
       // so better to use Promise here as well to get response properly
       .then(res => {
-        // console.log('what is res?', res)
         this.setState({
           // set current location (res form Promise) as a state 
           location: res,
@@ -120,13 +119,12 @@ export default class GMaps extends Component{
 
   render() {
     // check current location which has fetched by res
-    console.log('location is', this.state.location)
     return(
       <div>
         <Menus className={"BurgerMenu"} />
         <InnerToGMaps
           isMarkerShown 
-          zoom={13}
+          zoom={15}
           center={this.state.location}
           loadingElement={<div style={{ height: `70vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}

@@ -21,7 +21,6 @@ class GMapsForGrabbbb extends Component {
   }
 
   openInfoWindow = index => {
-    console.log(index);
 
     const { isOpen } = this.state;
     this.setState({
@@ -128,7 +127,7 @@ export default class GMaps extends Component{
         <Menus className="BurgerMenu" />
         <InnerToGMaps
           isMarkerShown 
-          zoom={13}
+          zoom={15}
           center={this.state.location}
           loadingElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
