@@ -113,6 +113,7 @@ export default class GMaps extends Component{
         // console.log('This is invoked as 2nd then :', this.state.location)
         // callbackはparameterとしてresultsをもらう
         const updateState = (results) => {
+          // setStateするとrenderが呼ばれる
           this.setState({
             results: results, 
           })
