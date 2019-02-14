@@ -3,6 +3,7 @@ import Menus from './Menus/Menus';
 // {} - import submodules from the library
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { getUserLocation, searchPlaces } from '../../utils/index';
+import axios from 'axios';
 import WifiMarker from "./../../assets/svg/pin-wifi-mob.svg";
 import './GMaps.scss';
 
@@ -18,6 +19,7 @@ class GMapsForGrabbbb extends Component {
   state = {
     isOpen: false,
     activeMarkerIndex: null,
+    venues: [],
   }
 
   openInfoWindow = index => {
@@ -39,7 +41,7 @@ class GMapsForGrabbbb extends Component {
   }
 
   render() {
-    console.log(this.state.isOpen, this.state.activeMarkerIndex);
+    // console.log(this.state.isOpen, this.state.activeMarkerIndex);
 
     return (
       <GoogleMap
@@ -50,7 +52,7 @@ class GMapsForGrabbbb extends Component {
       >
         {/* {props.isMarkerShown && <Marker position={props.center} />} */}
         {this.props.results.map((result, index) => {
-          console.log(result);
+          // console.log(result);
           let position = {
             lat: result.geometry.location.lat(),
             lng: result.geometry.location.lng(),
@@ -78,6 +80,35 @@ class GMapsForGrabbbb extends Component {
             </Marker>
           )
         })}
+
+        {this.props.venuesFromFs.map((result, index) => {
+          console.log(this.props.venuesFromFs);
+          let position = {
+            lat: result.location.lat,
+            lng: result.location.lng,
+          };
+          // let link = `https://www.google.com/maps/search/?api=1&query=${result.name}&query_place_id=${result.place_id}`;
+          
+          return (
+            <Marker
+              key={index}
+              position={position}
+              icon={WifiMarker}
+              animation={window.google.maps.Animation.DROP}
+              onClick={() => this.openInfoWindow(index)}
+            >
+              {this.state.isOpen && (this.state.activeMarkerIndex === index) && (<InfoWindow onCloseClick={this.onToggleOpen}>
+                <div className="info-window">
+                  <h2 className="info-window__shopname">{result.name}</h2>
+                  <ul>
+                    <li className="info-window__hours">{`NOW : ${result.opening_hours ? (result.opening_hours.open_now ? 'OPEN' : 'CLOSED') : 'NO INFOMATION'}`}</li>
+                    <li className="info-window__address">{result.vicinity}</li>
+                  </ul>
+                </div>
+              </InfoWindow>)}
+            </Marker>
+          )
+        })}
       </GoogleMap>
     )
   }
@@ -94,6 +125,7 @@ export default class GMaps extends Component{
       // initailize with state to be a change-able value
       location: {},
       results: [], // it'll be stored data as an array of object
+      venuesFromFs: [],
     }
 
     let map = document.getElementsByClassName('map');
@@ -107,7 +139,18 @@ export default class GMaps extends Component{
         this.setState({
           // set current location (res form Promise) as a state 
           location: res,
-        })
+        });
+
+        this.getVenuesViaFoursq(res)
+          .then(response => {
+            // console.log("response.data.response.venues: ", response.data.response.venues);
+            this.setState({
+              venuesFromFs: response.data.response.venues,
+            });
+          })
+          .catch(error => {
+            console.log("Error is: ", error)
+          });
       })
       .then(() => {
         // console.log('This is invoked as 2nd then :', this.state.location)
@@ -125,7 +168,7 @@ export default class GMaps extends Component{
 
   render() {
     // check current location which has fetched by res
-    console.log('location is', this.state.location)
+    // console.log('location is', this.state.location)
     return(
       <div>
         <Menus className={"BurgerMenu"} />
@@ -137,8 +180,28 @@ export default class GMaps extends Component{
           containerElement={<div style={{ height: `100vh`, width: `100vw`, }} />}
           mapElement={<div className="map" style={{ height: `100vh`, width: `100vw`, }} />}
           results={this.state.results}
+          venuesFromFs={this.state.venuesFromFs}
         />
       </div>
     )
+  }
+
+  getVenuesViaFoursq = (location) => {
+    const endPoint = "https://api.foursquare.com/v2/venues/search?"
+  
+    // we have to prepare everything we need here as an object
+    const parameters = {
+      client_id: " ",
+      client_secret: " ",
+      query: "WiFi",
+      // 上のnearBySearchと同じ条件(現在地から2500m圏内)で探したい
+      ll: `${location.lat},${location.lng}`,
+      v: "20180323", // version of our API
+    }
+
+    // axios is pretty similar to Fetch API: 
+    // https://medium.com/@sahilkkrazy/fetch-vs-axios-http-request-c9afa43f804e
+    // axios.getがPromiseを返す(by return)
+    return axios.get(endPoint + new URLSearchParams(parameters));
   }
 }
