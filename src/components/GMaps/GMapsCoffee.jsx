@@ -126,6 +126,12 @@ export default class GMaps extends Component{
   render() {
     // check current location which has fetched by res
     console.log('location is', this.state.location)
+
+    // render empty if not ready
+    if (!this.state.location.lat) {
+      return false;
+    }
+    
     return(
       <div>
         <Menus className={"BurgerMenu"} />
