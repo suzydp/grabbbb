@@ -21,7 +21,8 @@
     "hack": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && push-dir --dir=build --branch=gh-pages --cleanup"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +32,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "push-dir": "^0.4.1"
+  }
 }
