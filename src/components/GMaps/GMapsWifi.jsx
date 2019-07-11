@@ -42,47 +42,101 @@ class GMapsForGrabbbb extends Component {
   render() {
     const mapStyles = [
       {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry",
-        "stylers": [
-          {
-              "color": "#f7f1df"
-          }
-        ]
-      },
-      {
-        "featureType": "landscape.natural",
-        "elementType": "geometry",
-        "stylers": [
-          {
-              "color": "#d0e3b4"
-          }
-        ]
-      },
-      {
-        "featureType": "landscape.natural.terrain",
-        "elementType": "geometry",
-        "stylers": [
-          {
-              "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.business",
+        "featureType": "administrative",
         "elementType": "all",
         "stylers": [
           {
-              "visibility": "off"
+            "visibility": "on"
+          },
+          {
+            "lightness": "-4"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.province",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.locality",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.neighborhood",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+          {
+            "color": "#faefcc"
+          },
+          {
+            "lightness": "0"
+          },
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#c68c39"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "off"
           }
         ]
       },
       {
         "featureType": "poi.medical",
-        "elementType": "geometry",
+        "elementType": "labels",
         "stylers": [
           {
-              "visibility": "off"
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "on"
           }
         ]
       },
@@ -91,13 +145,25 @@ class GMapsForGrabbbb extends Component {
         "elementType": "geometry",
         "stylers": [
           {
-              "color": "#bde6ab"
+            "color": "#e3eed3"
           }
         ]
       },
       {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+          {
+              "visibility": "off"
+          },
+          {
+              "lightness": 20
+          }
+        ]
+      },
+      {
+        "featureType": "poi.place_of_worship",
+        "elementType": "labels",
         "stylers": [
           {
               "visibility": "off"
@@ -105,56 +171,71 @@ class GMapsForGrabbbb extends Component {
         ]
       },
       {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
+        "featureType": "poi.school",
+        "elementType": "all",
         "stylers": [
           {
-              "color": "#ffe15f"
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+          {
+            "lightness": 20
           }
         ]
       },
       {
         "featureType": "road.highway",
-        "elementType": "geometry.stroke",
+        "elementType": "geometry",
         "stylers": [
           {
-              "color": "#efd151"
+            "color": "#f39494"
           }
         ]
       },
       {
         "featureType": "road.arterial",
-        "elementType": "geometry.fill",
+        "elementType": "geometry",
         "stylers": [
           {
-              "color": "#ffffff"
+            "color": "#fbcccc"
           }
         ]
       },
       {
         "featureType": "road.local",
-        "elementType": "geometry.fill",
+        "elementType": "geometry",
         "stylers": [
           {
-              "color": "black"
+            "color": "#ffffff"
+          },
+          {
+            "visibility": "on"
           }
         ]
       },
       {
-        "featureType": "transit.station.airport",
-        "elementType": "geometry.fill",
+        "featureType": "transit.station",
+        "elementType": "labels",
         "stylers": [
           {
-              "color": "#cfb2db"
+            "visibility": "off"
           }
         ]
       },
       {
         "featureType": "water",
-        "elementType": "geometry",
+        "elementType": "all",
         "stylers": [
           {
-              "color": "#a2daf2"
+            "visibility": "on"
+          },
+          {
+            "color": "#cbe3ff"
           }
         ]
       }
